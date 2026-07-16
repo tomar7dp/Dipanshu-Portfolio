@@ -1,37 +1,34 @@
-import TerminalWindow from "./TerminalWindow";
-
-const SKILLS: Record<string, string[]> = {
-  languages: ["TypeScript", "JavaScript", "Python", "SQL"],
-  frontend: ["React", "Next.js", "Tailwind CSS"],
-  backend: ["Node.js", "Express", "FastAPI"],
-  infra: ["Docker", "PostgreSQL", "AWS", "CI/CD"],
-};
+import { skills } from "@/data/portfolio";
 
 export default function Skills() {
-  const entries = Object.entries(SKILLS);
   return (
-    <TerminalWindow id="skills" command="cat skills.json">
-      <pre className="overflow-x-auto text-sm leading-relaxed text-ink">
-        <code>
-          {"{\n"}
-          {entries.map(([key, values], i) => (
-            <span key={key}>
-              {"  "}
-              <span className="text-cyan">&quot;{key}&quot;</span>
-              {": ["}
-              {values.map((v, j) => (
-                <span key={v}>
-                  <span className="text-amber">&quot;{v}&quot;</span>
-                  {j < values.length - 1 ? ", " : ""}
-                </span>
-              ))}
-              {"]"}
-              {i < entries.length - 1 ? ",\n" : "\n"}
-            </span>
+    <section id="skills" className="border-t border-border px-6 py-28">
+      <div className="mx-auto max-w-content">
+        <p className="section-label mb-3">Toolbox</p>
+        <h2 className="font-display text-3xl font-medium text-paper sm:text-4xl">
+          What I work with
+        </h2>
+
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {skills.map((group) => (
+            <div key={group.category}>
+              <h3 className="font-mono text-xs uppercase tracking-wide text-slate">
+                {group.category}
+              </h3>
+              <ul className="mt-4 flex flex-col gap-2">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="font-body text-sm text-paper"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-          {"}"}
-        </code>
-      </pre>
-    </TerminalWindow>
+        </div>
+      </div>
+    </section>
   );
 }

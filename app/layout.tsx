@@ -1,16 +1,29 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { profile } from "@/data/portfolio";
 
-const plexMono = IBM_Plex_Mono({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-mono",
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Your Name — Developer",
-  description: "Full-stack developer portfolio",
+  title: `${profile.name} — ${profile.role}`,
+  description: profile.tagline,
 };
 
 export default function RootLayout({
@@ -19,8 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={plexMono.variable}>
-      <body className="font-mono antialiased">{children}</body>
+    <html lang="en">
+      <body
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body bg-ink text-paper antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,44 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-::selection {
-  background: #ffb238;
-  color: #0b0d0a;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0b0d0a;
-  color: #e6e6df;
-  background-image:
-    radial-gradient(ellipse at top, rgba(255, 178, 56, 0.06), transparent 60%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.012) 0px,
-      rgba(255, 255, 255, 0.012) 1px,
-      transparent 1px,
-      transparent 3px
-    );
+  background-color: #0b1120;
+  color: #e7eaf0;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
+::selection {
+  background-color: #5b8def;
+  color: #0b1120;
 }
-::-webkit-scrollbar-track {
-  background: #0b0d0a;
-}
-::-webkit-scrollbar-thumb {
-  background: #242920;
-  border-radius: 0;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ffb238;
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid #5b8def;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
@@ -48,4 +35,12 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.section-label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #5b8def;
+  text-transform: uppercase;
 }

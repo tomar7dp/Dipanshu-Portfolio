@@ -1,32 +1,43 @@
 "use client";
 
-const LINKS = [
-  { href: "#about", label: "whoami" },
-  { href: "#projects", label: "ls projects/" },
-  { href: "#skills", label: "cat skills.json" },
-  { href: "#experience", label: "git log" },
-  { href: "#contact", label: "./contact.sh" },
+import { profile } from "@/data/portfolio";
+
+const links = [
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4 text-sm">
-        <a href="#top" className="text-ink">
-          <span className="text-amber">~</span>/your-name
+    <header className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-ink/80 backdrop-blur-sm">
+      <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
+        <a
+          href="#top"
+          className="font-display text-lg font-medium tracking-tight text-paper"
+        >
+          {profile.name.split(" ")[0]}
+          <span className="text-accent">.</span>
         </a>
-        <ul className="hidden gap-6 sm:flex">
-          {LINKS.map((l) => (
-            <li key={l.href}>
+        <ul className="hidden gap-8 sm:flex">
+          {links.map((link) => (
+            <li key={link.href}>
               <a
-                href={l.href}
-                className="text-muted transition-colors hover:text-amber"
+                href={link.href}
+                className="font-mono text-sm text-slate-light transition-colors hover:text-paper"
               >
-                {l.label}
+                {link.label}
               </a>
             </li>
           ))}
         </ul>
+        <a
+          href={`mailto:${profile.email}`}
+          className="hidden rounded-md border border-border px-4 py-1.5 font-mono text-sm text-paper transition-colors hover:border-accent hover:text-accent sm:inline-block"
+        >
+          Say hi
+        </a>
       </nav>
     </header>
   );

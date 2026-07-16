@@ -1,55 +1,69 @@
-import TerminalWindow from "./TerminalWindow";
-
-const PROJECTS = [
-  {
-    name: "project-one",
-    desc: "A short description of what this project does and the problem it solves for its users.",
-    stack: ["Next.js", "TypeScript", "Postgres"],
-    href: "#",
-  },
-  {
-    name: "project-two",
-    desc: "A short description of what this project does and the problem it solves for its users.",
-    stack: ["React", "Node.js", "Redis"],
-    href: "#",
-  },
-  {
-    name: "project-three",
-    desc: "A short description of what this project does and the problem it solves for its users.",
-    stack: ["Python", "FastAPI", "Docker"],
-    href: "#",
-  },
-];
+import { projects } from "@/data/portfolio";
+import { ArrowUpRight, Github } from "lucide-react";
 
 export default function Projects() {
   return (
-    <TerminalWindow id="projects" command="ls -la projects/">
-      <div className="grid gap-4 sm:grid-cols-2">
-        {PROJECTS.map((p) => (
-          <a
-            key={p.name}
-            href={p.href}
-            className="group border border-line p-5 transition-colors hover:border-amber"
-          >
-            <p className="text-sm text-ink">
-              <span className="text-cyan">drwxr-xr-x</span> {p.name}/
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              {p.desc}
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2 text-xs">
-              {p.stack.map((s) => (
-                <li
-                  key={s}
-                  className="border border-line px-2 py-1 text-muted group-hover:border-amber/40 group-hover:text-amber"
+    <section id="projects" className="px-6 py-28">
+      <div className="mx-auto max-w-content">
+        <p className="section-label mb-3">Selected work</p>
+        <h2 className="font-display text-3xl font-medium text-paper sm:text-4xl">
+          Things I&apos;ve built
+        </h2>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              className="group flex flex-col justify-between rounded-lg border border-border bg-surface p-6 transition-colors hover:border-accent-dim"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-display text-xl text-paper">
+                    {project.title}
+                  </h3>
+                  {project.featured && (
+                    <span className="rounded-full border border-signal/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-signal">
+                      Featured
+                    </span>
+                  )}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-slate-light">
+                  {project.description}
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded border border-border px-2 py-0.5 font-mono text-xs text-slate"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-6 flex gap-5 font-mono text-sm">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-accent transition-opacity hover:opacity-80"
                 >
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </a>
-        ))}
+                  Live <ArrowUpRight size={14} />
+                </a>
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-slate-light transition-colors hover:text-paper"
+                >
+                  <Github size={14} /> Source
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-    </TerminalWindow>
+    </section>
   );
 }

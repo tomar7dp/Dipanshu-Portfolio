@@ -1,36 +1,43 @@
-import TerminalWindow from "./TerminalWindow";
-
-const LINKS = [
-  { label: "email", value: "you@example.com", href: "mailto:you@example.com" },
-  { label: "github", value: "github.com/yourname", href: "https://github.com/yourname" },
-  { label: "linkedin", value: "linkedin.com/in/yourname", href: "https://linkedin.com/in/yourname" },
-];
+import { profile } from "@/data/portfolio";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   return (
-    <TerminalWindow id="contact" command="./contact.sh --send">
-      <p className="text-sm text-muted">
-        <span className="text-amber">&gt;</span> Enter a channel to reach me:
-      </p>
-      <ul className="mt-4 space-y-2 text-sm sm:text-base">
-        {LINKS.map((l) => (
-          <li key={l.label}>
-            <a
-              href={l.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-ink transition-colors hover:text-amber"
-            >
-              <span className="text-cyan">{l.label}</span>
-              <span className="text-muted"> :: </span>
-              {l.value}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-8 text-xs text-muted">
-        © {new Date().getFullYear()} Your Name. Built with Next.js.
-      </p>
-    </TerminalWindow>
+    <section id="contact" className="border-t border-border px-6 py-28">
+      <div className="mx-auto max-w-content">
+        <p className="section-label mb-3">Contact</p>
+        <h2 className="max-w-xl font-display text-3xl font-medium text-paper sm:text-4xl">
+          Have something worth building? Let&apos;s talk.
+        </h2>
+
+        <a
+          href={`mailto:${profile.email}`}
+          className="mt-8 inline-flex items-center gap-2 font-mono text-lg text-accent transition-opacity hover:opacity-80 sm:text-2xl"
+        >
+          {profile.email}
+          <ArrowUpRight size={20} />
+        </a>
+
+        <ul className="mt-10 flex flex-wrap gap-6">
+          {profile.socials.map((social) => (
+            <li key={social.label}>
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-sm text-slate-light transition-colors hover:text-paper"
+              >
+                {social.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-24 pb-16 font-mono text-xs text-slate sm:pb-0">
+          © {new Date().getFullYear()} {profile.name}. Built with Next.js
+          and Tailwind CSS.
+        </p>
+      </div>
+    </section>
   );
 }

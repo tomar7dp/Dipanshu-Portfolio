@@ -1,88 +1,85 @@
-# Developer Portfolio (Terminal Theme)
+# Dev Portfolio
 
-A Next.js + TypeScript + Tailwind portfolio styled like a terminal / shell session,
-with a boot-up sequence on load and each section framed as a command (`whoami`,
-`ls projects/`, `cat skills.json`, `git log`, `./contact.sh`).
+A developer portfolio built with Next.js 14 (App Router), TypeScript, and
+Tailwind CSS. Clean, code-forward look — a status bar at the bottom acts
+like an editor's status line and tracks which section you're viewing.
 
-## 1. Install
+Sections: Hero/About, Projects, Skills, Experience timeline, Contact.
 
-You need [Node.js](https://nodejs.org) 18.17 or newer installed.
+## 1. Install Node.js
+
+You need Node.js 18.17 or later. Check with:
 
 ```bash
-cd developer-journey-portfolio
+node -v
+```
+
+If you don't have it, install from [nodejs.org](https://nodejs.org) or with
+a version manager like `nvm`.
+
+## 2. Install dependencies
+
+From this project folder:
+
+```bash
 npm install
 ```
 
-## 2. Run it locally
+## 3. Run it locally
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:3000 — you should see the boot sequence, then your
-portfolio.
+Open [http://localhost:3000](http://localhost:3000). The page hot-reloads
+as you edit.
 
-## 3. Customize your content
+## 4. Make it yours
 
-Everything is plain text/data in the `components/` folder — no CMS, no config
-file to hunt through:
+Almost everything you need to change lives in **`data/portfolio.ts`**:
 
-| What to change | File |
-|---|---|
-| Name, tagline, intro | `components/Hero.tsx` |
-| About paragraph | `components/About.tsx` |
-| Projects list | `components/Projects.tsx` — edit the `PROJECTS` array |
-| Skills / tech stack | `components/Skills.tsx` — edit the `SKILLS` object |
-| Work history | `components/Experience.tsx` — edit the `HISTORY` array |
-| Email / GitHub / LinkedIn | `components/Contact.tsx` — edit the `LINKS` array |
-| Site title / meta description | `app/layout.tsx` |
-| Colors (amber/cyan/bg accents) | `tailwind.config.ts` under `theme.extend.colors` |
-| Boot-up text | `components/BootSequence.tsx` — edit the `LINES` array |
+- `profile` — your name, role, tagline, email, socials, stats
+- `projects` — each project's title, description, tags, and links
+- `skills` — grouped by category
+- `experience` — your work history for the timeline
 
-Each project card and skill/experience entry is just an object in an array —
-add or remove entries and the layout adjusts automatically.
+You generally don't need to touch component files just to update content.
 
-## 4. Deploy it (free, ~2 minutes)
+Other things you may want to change:
 
-The easiest path is [Vercel](https://vercel.com) (made by the creators of Next.js):
+- **Colors** — `tailwind.config.ts`, under `theme.extend.colors`
+- **Fonts** — `app/layout.tsx` (currently Space Grotesk / Inter / JetBrains
+  Mono, all free on Google Fonts)
+- **Page title** — `app/layout.tsx`, the `metadata` export
+- **Favicon / OG image** — drop files into `public/`
 
-1. Push this folder to a GitHub repo.
-2. Go to vercel.com → **New Project** → import that repo.
-3. Leave all settings as default and click **Deploy**.
-4. You'll get a live URL like `your-project.vercel.app` — you can attach a
-   custom domain later from the Vercel dashboard.
+## 5. Deploy it
 
-Alternatively, from the command line:
+The easiest path is [Vercel](https://vercel.com) (made by the creators of
+Next.js, and free for personal sites):
 
-```bash
-npm install -g vercel
-vercel
-```
+1. Push this project to a GitHub repo.
+2. Go to vercel.com → **Add New Project** → import that repo.
+3. Leave the default settings (Vercel auto-detects Next.js) → **Deploy**.
 
-and follow the prompts.
+You'll get a live URL in about a minute, and every push to your repo
+redeploys automatically.
 
-## 5. Project structure
+## Project structure
 
 ```
 app/
-  layout.tsx      — root layout, loads the mono font
-  page.tsx        — assembles all sections
-  globals.css     — CRT texture, scrollbar, base styles
+  layout.tsx      → fonts, metadata, wraps every page
+  page.tsx        → assembles the sections in order
+  globals.css     → base styles, focus states, reduced-motion handling
 components/
-  BootSequence.tsx  — the typed boot-up intro
-  TerminalWindow.tsx — reusable "terminal window" wrapper used by every section
-  Nav.tsx           — sticky nav with command-style links
-  Hero.tsx
-  About.tsx
-  Projects.tsx
-  Skills.tsx
-  Experience.tsx
-  Contact.tsx
+  Nav.tsx         → top navigation bar
+  Hero.tsx        → intro / about section
+  Projects.tsx    → project cards
+  Skills.tsx      → grouped skill tags
+  Timeline.tsx    → work experience timeline
+  Contact.tsx     → contact links + footer
+  StatusBar.tsx   → the fixed bottom status bar
+data/
+  portfolio.ts    → all your content — edit this first
 ```
-
-## Notes
-
-- Respects `prefers-reduced-motion` — the boot sequence and blinking cursor
-  are disabled for users who have that OS setting on.
-- Fully responsive down to small mobile widths.
-- No external UI libraries — just Tailwind, so it's easy to restyle.
