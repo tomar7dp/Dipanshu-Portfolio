@@ -3,20 +3,20 @@
 // to touch component code just to update your content.
 
 export const profile = {
-  name: "Alex Rivera",
+  name: "Dipanshu Tomar",
   role: "Full-Stack Developer",
   tagline:
     "I build fast, reliable web products — from the database schema to the pixel on screen.",
-  location: "Remote / Austin, TX",
+  location: "Ghaziabad(NCR) / Uttar Pradesh, India",
   availableForWork: true,
-  email: "hello@example.com",
+  email: "dipanshuthakurrrr7@gmail.com",
   socials: [
-    { label: "GitHub", href: "https://github.com/yourusername" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
-    { label: "X", href: "https://x.com/yourusername" },
+    { label: "GitHub", href: "https://github.com/tomar7dp" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/dipanshutomarrr/" },
+    { label: "LeetCode", href: "https://leetcode.com/u/tomardipanshu07" },
   ],
   stats: [
-    { value: "5+", label: "Years building" },
+    { value: "1+", label: "Years building" },
     { value: "30+", label: "Projects shipped" },
     { value: "12", label: "Open-source repos" },
   ],
@@ -72,7 +72,7 @@ export const skills = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "PostgreSQL", "Redis", "tRPC"],
+    items: ["Node.js", "PostgreSQL", "Express.js" ],
   },
   {
     category: "Tooling",
@@ -82,24 +82,10 @@ export const skills = [
 
 export const experience = [
   {
-    role: "Senior Software Engineer",
-    company: "Northwind Labs",
-    period: "2023 — Present",
+    role: "Software Engineer",
+    company: "Blue Swan Lake Studios",
+    period: "2026 — Present",
     description:
       "Lead a team of four building the internal platform used by 200+ engineers. Owns the deploy pipeline and API gateway.",
-  },
-  {
-    role: "Software Engineer",
-    company: "Fieldstone",
-    period: "2021 — 2023",
-    description:
-      "Built customer-facing dashboards and the billing system that processes 50k+ transactions a month.",
-  },
-  {
-    role: "Junior Developer",
-    company: "Coastline Digital",
-    period: "2019 — 2021",
-    description:
-      "Started on the agency's client-sites team, then moved into building their first internal design system.",
-  },
+  }
 ];
