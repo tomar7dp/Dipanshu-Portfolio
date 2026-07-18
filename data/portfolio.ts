@@ -77,11 +77,11 @@ export const skills = [
   },
   {
     category: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "Redux"],
+    items: ["React", "Next.js", "Tailwind CSS"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "PostgreSQL", "Redis", "tRPC"],
+    items: ["Node.js", "PostgreSQL", "Express"],
   },
   {
     category: "Tooling",
@@ -93,7 +93,7 @@ export const experience = [
   {
     role: "Software Engineer",
     company: "Blue Swan Lake Studios",
-    period: "2023 — Present",
+    period: "June,2026 — Present",
     description:
       "Lead a team building the internal platform used by 200+ engineers. Owns the deploy pipeline and API gateway.",
   }
