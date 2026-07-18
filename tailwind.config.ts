@@ -8,21 +8,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#05070C",
-        surface: "#0B0F1A",
-        "surface-2": "#11172A",
-        paper: "#F2F4FA",
+        ink: "#111111",
+        paper: "#FAF9F6",
+        surface: "#FFFFFF",
+        "surface-2": "#F1EFE9",
         slate: {
-          DEFAULT: "#838DA6",
-          light: "#AEB6CC",
+          DEFAULT: "#9C9C9C",
+          light: "#525252",
         },
-        border: "#1B2333",
+        border: "#E5E2DA",
         accent: {
-          DEFAULT: "#22D3EE",
-          dim: "#1A8FA3",
+          DEFAULT: "#2453EB",
+          dim: "#1B3FB8",
         },
-        signal: "#A855F7",
-        success: "#34D399",
+        signal: "#111111",
+        success: "#1E8E5A",
       },
       fontFamily: {
         display: ["var(--font-space-grotesk)", "sans-serif"],

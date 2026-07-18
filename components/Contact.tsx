@@ -6,7 +6,7 @@ export default function Contact() {
     <section id="contact" className="border-t border-border px-6 py-28">
       <div className="mx-auto max-w-content">
         <p className="section-label mb-3">Contact</p>
-        <h2 className="max-w-xl font-display text-3xl font-medium text-paper sm:text-4xl">
+        <h2 className="max-w-xl font-display text-3xl font-medium text-ink sm:text-4xl">
           Have something worth building? Let&apos;s talk.
         </h2>
 
@@ -25,7 +25,7 @@ export default function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-sm text-slate-light transition-colors hover:text-paper"
+                className="font-mono text-sm text-slate-light transition-colors hover:text-ink"
               >
                 {social.label}
               </a>

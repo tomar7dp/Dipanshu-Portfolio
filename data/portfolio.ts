@@ -16,6 +16,8 @@ export const profile = {
   idCode: "DipanshuTomar",
   roleCode: "SD",
   photoStatus: "ACTIVE",
+  summary:
+    "I'm a software developer who enjoys *building reliable systems* end to end — from clean backend architecture to a frontend that feels effortless to use.",
   location: "India",
   availableForWork: true,
   email: "dipanshuthakurrrr7@gmail.com",

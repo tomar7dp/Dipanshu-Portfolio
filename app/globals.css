@@ -7,18 +7,18 @@ html {
 }
 
 body {
-  background-color: #05070c;
-  color: #f2f4fa;
+  background-color: #faf9f6;
+  color: #111111;
 }
 
 ::selection {
-  background-color: #22d3ee;
-  color: #05070c;
+  background-color: #2453eb;
+  color: #faf9f6;
 }
 
 /* Visible keyboard focus everywhere */
 :focus-visible {
-  outline: 2px solid #22d3ee;
+  outline: 2px solid #2453eb;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -41,6 +41,6 @@ body {
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
-  color: #22d3ee;
+  color: #2453eb;
   text-transform: uppercase;
 }

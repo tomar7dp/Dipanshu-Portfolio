@@ -5,8 +5,8 @@ export default function Projects() {
   return (
     <section id="projects" className="px-6 py-28">
       <div className="mx-auto max-w-content">
-        <p className="section-label mb-3">Selected work</p>
-        <h2 className="font-display text-3xl font-medium text-paper sm:text-4xl">
+        <p className="section-label mb-3">Projects</p>
+        <h2 className="font-display text-3xl font-medium text-ink sm:text-4xl">
           Things I&apos;ve built
         </h2>
 
@@ -18,11 +18,11 @@ export default function Projects() {
             >
               <div>
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-xl text-paper">
+                  <h3 className="font-display text-xl text-ink">
                     {project.title}
                   </h3>
                   {project.featured && (
-                    <span className="rounded-full border border-signal/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-signal">
+                    <span className="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-slate-light">
                       Featured
                     </span>
                   )}
@@ -55,7 +55,7 @@ export default function Projects() {
                   href={project.codeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-slate-light transition-colors hover:text-paper"
+                  className="flex items-center gap-1 text-slate-light transition-colors hover:text-ink"
                 >
                   <Github size={14} /> Source
                 </a>

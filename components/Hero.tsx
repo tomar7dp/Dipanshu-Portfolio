@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Github, Linkedin, Code2 } from "lucide-react";
 import { profile } from "@/data/portfolio";
@@ -11,50 +8,13 @@ const icons = {
   leetcode: Code2,
 };
 
-function TerminalLine() {
-  const [typed, setTyped] = useState("");
-  const full = profile.terminalLine;
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reduceMotion) {
-      setTyped(full);
-      return;
-    }
-    let i = 0;
-    const interval = setInterval(() => {
-      i++;
-      setTyped(full.slice(0, i));
-      if (i >= full.length) clearInterval(interval);
-    }, 60);
-    return () => clearInterval(interval);
-  }, [full]);
-
-  return (
-    <div className="flex items-center gap-3 font-mono text-sm">
-      <span className="text-accent">&gt;_ &gt;</span>
-      <span className="rounded bg-surface-2 px-3 py-1 font-semibold tracking-wide text-paper">
-        {typed}
-        <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-blink bg-accent align-middle" />
-      </span>
-    </div>
-  );
-}
-
-function HighlightedText({ text }: { text: string }) {
+function Summary({ text }: { text: string }) {
   const parts = text.split("*");
   return (
     <>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <strong
-            key={i}
-            className={
-              "font-semibold " + (i % 4 === 1 ? "text-accent" : "text-signal")
-            }
-          >
+          <strong key={i} className="font-semibold text-ink">
             {part}
           </strong>
         ) : (
@@ -69,65 +29,33 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-16 pt-28"
+      className="flex min-h-screen flex-col justify-center px-6 pb-16 pt-28"
     >
-      {/* subtle grid backdrop */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#22D3EE 1px, transparent 1px), linear-gradient(90deg, #22D3EE 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-
-      <div className="relative mx-auto w-full max-w-content">
-        {/* top status row */}
-        <div className="mb-10 flex items-center justify-between">
-          <span className="rounded border border-accent/40 px-3 py-1 font-mono text-xs tracking-widest text-accent">
-            [{profile.tag}]
-          </span>
-          <span className="flex items-center gap-2 font-mono text-xs tracking-widest text-success">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-success" />
-            ONLINE
-          </span>
-        </div>
-
+      <div className="mx-auto w-full max-w-content">
         <div className="grid items-center gap-16 lg:grid-cols-[1.3fr_auto]">
           <div className="animate-fadeUp">
-            <p className="mb-3 rounded border border-accent/30 inline-block px-3 py-1 font-mono text-xs tracking-widest text-accent">
-              // CORE PROTOCOL INITIALIZED &middot; NODE STABLE
-            </p>
+            <p className="section-label mb-5">{profile.role}</p>
 
-            <h1 className="font-display text-5xl font-black leading-[1.05] text-paper sm:text-7xl">
-              HELLO,
-              <br />
-              I&apos;M{" "}
-              <span className="bg-gradient-to-r from-accent to-signal bg-clip-text text-transparent">
-                {profile.name.toUpperCase()}
-              </span>
+            <h1 className="font-display text-5xl font-medium leading-[1.1] text-ink sm:text-6xl">
+              Hi, I&apos;m {profile.name}.
             </h1>
 
-            <div className="mt-8">
-              <TerminalLine />
-            </div>
-
-            <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-slate-light sm:text-lg">
-              <HighlightedText text={profile.heroDescription} />
+            <p className="mt-6 max-w-lg font-body text-base leading-relaxed text-slate-light sm:text-lg">
+              <Summary text={profile.summary} />
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="#projects"
-                className="rounded-md bg-gradient-to-r from-accent to-signal px-6 py-3 font-mono text-sm font-semibold tracking-wide text-ink transition-transform hover:-translate-y-0.5"
+                className="rounded-md bg-ink px-6 py-3 font-body text-sm font-medium text-paper transition-opacity hover:opacity-85"
               >
-                VIEW MISSIONS
+                View projects
               </a>
               <a
                 href="#contact"
-                className="rounded-md border border-border px-6 py-3 font-mono text-sm tracking-wide text-paper transition-colors hover:border-accent hover:text-accent"
+                className="rounded-md border border-border px-6 py-3 font-body text-sm font-medium text-ink transition-colors hover:border-ink"
               >
-                INITIATE CONTACT
+                Get in touch
               </a>
             </div>
 
@@ -141,49 +69,60 @@ export default function Hero() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-slate-light transition-colors hover:border-accent hover:text-accent"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-slate-light transition-colors hover:border-ink hover:text-ink"
                     >
-                      <Icon size={18} />
+                      <Icon size={17} />
                     </a>
                   </li>
                 );
               })}
             </ul>
+
+            <dl className="mt-16 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-8">
+              {profile.stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="font-display text-2xl text-ink">
+                    {stat.value}
+                  </dt>
+                  <dd className="mt-1 font-body text-xs text-slate">
+                    {stat.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           {/* photo */}
           <div className="mx-auto flex flex-col items-center">
-            <div className="relative h-52 w-52 sm:h-64 sm:w-64">
-              <div className="absolute inset-0 animate-[spin_18s_linear_infinite] rounded-full border border-dashed border-accent/40" />
-              <div className="absolute inset-3 rounded-full border border-signal/30" />
-              <div className="absolute inset-6 overflow-hidden rounded-full border-2 border-surface-2 bg-surface">
-                <Image
-                  src="/profile.jpg"
-                  alt={profile.name}
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
+            <div className="relative h-52 w-52 overflow-hidden rounded-full border border-border sm:h-64 sm:w-64">
+              {/*
+                Tuning the photo crop:
+                - objectPosition's 2nd value (Y%) moves the photo up/down — lower = more of the top shows
+                - scale(...) zooms in — increase for more zoom, decrease for less
+                - translateX(...) pans left/right — more negative = subject shifts further left
+              */}
+              <Image
+                src="/profile.jpg"
+                alt={profile.name}
+                fill
+                className="object-cover"
+                style={{
+                  objectPosition: "center 4%",
+                  transform: "scale(1.1) translateX(0%)",
+                }}
+                priority
+              />
             </div>
-            <div className="mt-5 flex gap-4 rounded border border-border bg-surface px-4 py-2 font-mono text-[11px] tracking-wide text-slate-light">
-              <span>
-                ID: <span className="text-paper">{profile.idCode}</span>
-              </span>
-              <span>
-                ROLE: <span className="text-paper">{profile.roleCode}</span>
-              </span>
-              <span>
-                STATUS: <span className="text-success">{profile.photoStatus}</span>
-              </span>
-            </div>
+            <p className="mt-5 flex items-center gap-2 font-body text-sm text-slate">
+              {profile.availableForWork && (
+                <span className="h-2 w-2 rounded-full bg-success" />
+              )}
+              {profile.availableForWork ? "Available for work" : profile.location}
+              {profile.availableForWork && ` · ${profile.location}`}
+            </p>
           </div>
         </div>
       </div>
-
-      <p className="absolute bottom-6 left-6 hidden font-mono text-xs tracking-widest text-signal/70 sm:block">
-        // 01 . IDENTITY_LAYER
-      </p>
     </section>
   );
 }
