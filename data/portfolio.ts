@@ -4,21 +4,30 @@
 
 export const profile = {
   name: "Dipanshu Tomar",
-  role: "Full-Stack Developer",
-  tagline:
-    "I build fast, reliable web products — from the database schema to the pixel on screen.",
-  location: "Ghaziabad(NCR) / Uttar Pradesh, India",
+  role: "Software Developer",
+  // Small pill top-left, e.g. [CORE_DEV]
+  tag: "CORE_DEV",
+  // The short line that "types" itself out in the terminal box
+  terminalLine: "BUILDING SCALABLE SYSTEMS",
+  // Wrap words in *asterisks* to highlight them in cyan/purple
+  heroDescription:
+    "Engineering *reliable* web systems at the intersection of *clean architecture*, backend logic, and *performance-focused* engineering.",
+  // Shown in the small tag under the photo: ID: <idCode>  ROLE: <roleCode>  STATUS: <status>
+  idCode: "DipanshuTomar",
+  roleCode: "SD",
+  photoStatus: "ACTIVE",
+  location: "India",
   availableForWork: true,
   email: "dipanshuthakurrrr7@gmail.com",
   socials: [
-    { label: "GitHub", href: "https://github.com/tomar7dp" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/dipanshutomarrr/" },
-    { label: "LeetCode", href: "https://leetcode.com/u/tomardipanshu07" },
+    { label: "GitHub", icon: "github", href: "https://github.com/tomar7dp" },
+    { label: "LinkedIn", icon: "linkedin", href: "https://www.linkedin.com/in/dipanshutomarrr" },
+    { label: "LeetCode", icon: "leetcode", href: "http://leetcode.com/u/tomardipanshu07" },
   ],
   stats: [
     { value: "1+", label: "Years building" },
-    { value: "30+", label: "Projects shipped" },
-    { value: "12", label: "Open-source repos" },
+    { value: "5+", label: "Projects shipped" },
+    { value: "4+", label: "Open-source repos" },
   ],
 };
 
@@ -72,7 +81,7 @@ export const skills = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "PostgreSQL", "Express.js" ],
+    items: ["Node.js", "PostgreSQL", "Redis", "tRPC"],
   },
   {
     category: "Tooling",
@@ -84,8 +93,8 @@ export const experience = [
   {
     role: "Software Engineer",
     company: "Blue Swan Lake Studios",
-    period: "2026 — Present",
+    period: "2023 — Present",
     description:
-      "Lead a team of four building the internal platform used by 200+ engineers. Owns the deploy pipeline and API gateway.",
+      "Lead a team building the internal platform used by 200+ engineers. Owns the deploy pipeline and API gateway.",
   }
 ];

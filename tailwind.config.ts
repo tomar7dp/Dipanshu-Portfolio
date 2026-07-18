@@ -8,20 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B1120",
-        surface: "#111A2B",
-        "surface-2": "#16213A",
-        paper: "#E7EAF0",
+        ink: "#05070C",
+        surface: "#0B0F1A",
+        "surface-2": "#11172A",
+        paper: "#F2F4FA",
         slate: {
-          DEFAULT: "#8A93A6",
-          light: "#B4BBCA",
+          DEFAULT: "#838DA6",
+          light: "#AEB6CC",
         },
-        border: "#1E293B",
+        border: "#1B2333",
         accent: {
-          DEFAULT: "#5B8DEF",
-          dim: "#3A5FA8",
+          DEFAULT: "#22D3EE",
+          dim: "#1A8FA3",
         },
-        signal: "#F5A524",
+        signal: "#A855F7",
         success: "#34D399",
       },
       fontFamily: {
