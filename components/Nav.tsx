@@ -18,7 +18,7 @@ export default function Nav() {
           className="font-display text-lg font-medium tracking-tight text-ink"
         >
           {profile.name}
-          <span className="text-accent">.</span>
+          <span className="text-accent"></span>
         </a>
         <ul className="hidden gap-8 sm:flex">
           {links.map((link) => (
