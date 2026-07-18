@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
-  description: profile.tagline,
+  description: profile.heroDescription,
 };
 
 export default function RootLayout({
