@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { Github, Linkedin, Code2 } from "lucide-react";
+import { Github, Linkedin, Code2, Instagram } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 const icons = {
   github: Github,
   linkedin: Linkedin,
   leetcode: Code2,
+  instagram: Instagram,
 };
 
 function Summary({ text }: { text: string }) {
@@ -61,7 +62,7 @@ export default function Hero() {
 
             <ul className="mt-10 flex gap-3">
               {profile.socials.map((social) => {
-                const Icon = icons[social.icon as keyof typeof icons];
+                const Icon = icons[social.icon as keyof typeof icons] ?? Github;
                 return (
                   <li key={social.label}>
                     <a
@@ -107,8 +108,8 @@ export default function Hero() {
                 fill
                 className="object-cover"
                 style={{
-                  objectPosition: "center 4%",
-                  transform: "scale(1.1) translateX(0%)",
+                  objectPosition: "center -5%",
+                  transform: "scale(1.2) translateX(-1%)",
                 }}
                 priority
               />

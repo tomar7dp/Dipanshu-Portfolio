@@ -1,4 +1,17 @@
+import { Code2, Layers, Database, Server, GitBranch, TerminalSquare, Box, Cloud, LineChart } from "lucide-react";
 import { skills } from "@/data/portfolio";
+
+const icons = {
+  code: Code2,
+  layers: Layers,
+  database: Database,
+  server: Server,
+  git: GitBranch,
+  terminal: TerminalSquare,
+  box: Box,
+  cloud: Cloud,
+  chart: LineChart,
+};
 
 export default function Skills() {
   return (
@@ -9,24 +22,37 @@ export default function Skills() {
           What I work with
         </h2>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {skills.map((group) => (
-            <div key={group.category}>
-              <h3 className="font-mono text-xs uppercase tracking-wide text-slate">
-                {group.category}
-              </h3>
-              <ul className="mt-4 flex flex-col gap-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="font-body text-sm text-ink"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((skill) => {
+            const Icon = icons[skill.icon as keyof typeof icons] ?? Code2;
+            return (
+              <div
+                key={skill.name}
+                className="rounded-lg border border-border bg-surface p-6"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-ink">
+                    <Icon size={17} />
+                  </span>
+                  <span className="font-mono text-xs text-slate">
+                    {skill.percent}%
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-lg text-ink">
+                  {skill.name}
+                </h3>
+                <p className="mt-1 text-xs leading-relaxed text-slate">
+                  {skill.description}
+                </p>
+                <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-surface-2">
+                  <div
+                    className="h-full rounded-full bg-accent"
+                    style={{ width: `${skill.percent}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
